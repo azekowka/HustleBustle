@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import { Input } from "@/components/ui/input"
-import type { TimerData } from "../types/TimerData"
+import type { TimerData } from "@/types/TimerData"
 import { Plus } from "lucide-react"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
@@ -65,7 +65,7 @@ export function TimerCreationCard({ onCreateTimer }: TimerCreationCardProps) {
 
   return (
     <Card
-      className={`w-[280px] h-[280px] rounded-3xl overflow-visible transition-all duration-200 
+      className={`w-[400px] h-[450px] rounded-3xl overflow-visible transition-all duration-200 
         ${step === "initial" ? "bg-transparent hover:bg-card/10 border border-dashed border-muted-foreground/30" : "bg-card"}
         ${step === "initial" ? "hover:opacity-100 cursor-pointer" : ""}
       `}
@@ -75,7 +75,7 @@ export function TimerCreationCard({ onCreateTimer }: TimerCreationCardProps) {
         {step === "initial" && <Plus className="w-12 h-12 text-muted-foreground/50" />}
         {step === "date" && (
           <>
-            <div className="flex items-center space-x-2 mb-4">
+            <div className="flex items-center space-x-2 mb-2">
               <Switch id="timer-type" checked={isTillTimer} onCheckedChange={setIsTillTimer} />
               <Label htmlFor="timer-type" className="font-mono text-sm">
                 {isTillTimer ? "UNTIL" : "SINCE"}
@@ -85,15 +85,15 @@ export function TimerCreationCard({ onCreateTimer }: TimerCreationCardProps) {
               mode="single"
               selected={selectedDate}
               onSelect={(date) => setSelectedDate(date)}
-              className="rounded-md scale-[0.85] -mt-4 border-none"
+              className="rounded-md border-none"
               initialFocus
             />
-            <div className="flex justify-between w-full absolute -bottom-6 left-0 right-0 px-4">
-              <Button variant="outline" onClick={handleCancel}>
+            <div className="flex justify-end absolute gap-2 mt-2 inset-x-0 bottom-2 px-4">
+              <Button size="sm" variant="outline" onClick={handleCancel}>
                 Cancel
               </Button>
-              <Button onClick={handleConfirm} disabled={!selectedDate}>
-                Confirm
+              <Button size="sm" onClick={handleConfirm} disabled={!selectedDate}>
+                Save
               </Button>
             </div>
           </>

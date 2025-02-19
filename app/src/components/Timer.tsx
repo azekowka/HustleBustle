@@ -93,7 +93,7 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
     >
       <Card
-        className={`w-[280px] h-[280px] rounded-3xl relative ${isExpired && !isHovered ? "opacity-50" : ""} transition-opacity duration-200`}
+        className={`w-[400px] h-[450px] rounded-3xl relative ${isExpired && !isHovered ? "opacity-50" : ""} transition-opacity duration-200`}
         onMouseEnter={() => {
           !isEditing && setShowDelete(true)
           setIsHovered(true)
@@ -123,13 +123,14 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
                 className="font-mono mb-2"
                 placeholder="Timer name"
               />
-              <div className="flex-1 flex items-center justify-center -mt-4">
+              <div className="flex-1 flex items-center justify-center -mt-2">
                 <Calendar
                   mode="single"
                   selected={editDate}
                   onSelect={(date) => date && setEditDate(date)}
                   className="rounded-md border-none"
                   initialFocus
+                  
                 />
               </div>
               <div className="flex justify-end gap-2 mt-2">

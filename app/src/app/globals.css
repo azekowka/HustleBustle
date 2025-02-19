@@ -120,3 +120,7 @@
   }
 }
 
+.custom-calendar {
+  transform: scale(0.8); /* Уменьшаем размер */
+  transform-origin: top center;
+}
