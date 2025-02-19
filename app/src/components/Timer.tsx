@@ -25,15 +25,19 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
   const [isHovered, setIsHovered] = React.useState(false)
   const [editName, setEditName] = React.useState(name)
   const [editDate, setEditDate] = React.useState(endDate)
+  const [editHour, setEditHour] = React.useState(endDate.getHours().toString().padStart(2, "0"))
+  const [editMinute, setEditMinute] = React.useState(endDate.getMinutes().toString().padStart(2, "0"))
   const [editType, setEditType] = React.useState(type)
 
   const timeLeft = React.useMemo(() => formatTimeDifference(endDate, type, now), [endDate, type, now])
   const isExpired = type === "till" && timeLeft.total <= 0
 
   const handleSaveEdit = () => {
+    const updatedDate = new Date(editDate)
+    updatedDate.setHours(Number.parseInt(editHour || "00", 10), Number.parseInt(editMinute || "00", 10))
     onEdit(id, {
       name: editName,
-      endDate: editDate,
+      endDate: updatedDate,
       type: editType,
     })
     onToggleEdit(id)
@@ -107,40 +111,72 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
         <CardContent className="p-4 h-full relative">
           {isEditing ? (
             <div className="absolute inset-0 flex flex-col p-4 bg-card z-10">
-              <div className="flex items-center space-x-2 mb-2">
-                <Switch
-                  id={`timer-type-${id}`}
-                  checked={editType === "till"}
-                  onCheckedChange={(checked) => setEditType(checked ? "till" : "from")}
+              <div className="flex items-center space-x-4 mb-4 w-full">
+                <Input
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                  className="flex-1 font-mono"
+                  placeholder="Timer name"
                 />
-                <Label htmlFor={`timer-type-${id}`} className="font-mono text-sm">
-                  {editType === "till" ? "UNTIL" : "SINCE"}
-                </Label>
+                <div className="flex items-center space-x-2">
+                  <Input
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    maxLength={2}
+                    value={editHour === "00" ? "" : editHour}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, "")
+                      setEditHour(value ? value.padStart(2, "0") : "00")
+                    }}
+                    className="w-16 font-mono text-center"
+                    placeholder="HH"
+                  />
+                  <span>:</span>
+                  <Input
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    maxLength={2}
+                    value={editMinute === "00" ? "" : editMinute}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, "")
+                      setEditMinute(value ? value.padStart(2, "0") : "00")
+                    }}
+                    className="w-16 font-mono text-center"
+                    placeholder="MM"
+                  />
+                </div>
               </div>
-              <Input
-                value={editName}
-                onChange={(e) => setEditName(e.target.value)}
-                className="font-mono mb-2"
-                placeholder="Timer name"
-              />
-              <div className="flex-1 flex items-center justify-center -mt-2">
+              <div className="flex-1 flex items-center justify-center -mt-14">
                 <Calendar
                   mode="single"
                   selected={editDate}
                   onSelect={(date) => date && setEditDate(date)}
                   className="rounded-md border-none"
                   initialFocus
-                  
                 />
               </div>
-              <div className="flex justify-end gap-2 mt-2">
-                <Button size="sm" variant="outline" onClick={() => onToggleEdit(id)}>
-                  Cancel
-                </Button>
-                <Button size="sm" onClick={handleSaveEdit}>
-                  Save
-                </Button>
-              </div>
+              <div className="flex justify-between items-center absolute inset-x-0 bottom-2 px-4">
+                <div className="flex items-center space-x-2">
+                    <Switch
+                    id={`timer-type-${id}`}
+                    checked={editType === "till"}
+                    onCheckedChange={(checked) => setEditType(checked ? "till" : "from")}
+                    />
+                    <Label htmlFor={`timer-type-${id}`} className="font-mono text-sm">
+                    {editType === "till" ? "UNTIL" : "SINCE"}
+                    </Label>
+                </div>
+                <div className="flex gap-2">
+                    <Button size="sm" variant="outline" onClick={() => onToggleEdit(id)}>
+                    Cancel
+                    </Button>
+                    <Button size="sm" onClick={handleSaveEdit}>
+                    Save
+                    </Button>
+                </div>
+                </div>
             </div>
           ) : (
             <>

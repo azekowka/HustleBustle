@@ -18,6 +18,8 @@ interface TimerCreationCardProps {
 export function TimerCreationCard({ onCreateTimer }: TimerCreationCardProps) {
   const [isActive, setIsActive] = useState(false)
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
+  const [selectedHour, setSelectedHour] = useState<string>("00")
+  const [selectedMinute, setSelectedMinute] = useState<string>("00")
   const [timerName, setTimerName] = useState("")
   const [step, setStep] = useState<"initial" | "date" | "name">("initial")
   const [isTillTimer, setIsTillTimer] = useState(true)
@@ -40,6 +42,8 @@ export function TimerCreationCard({ onCreateTimer }: TimerCreationCardProps) {
     setStep("initial")
     setIsActive(false)
     setSelectedDate(undefined)
+    setSelectedHour("00")
+    setSelectedMinute("00")
     setTimerName("")
     setIsTillTimer(true)
   }
@@ -48,9 +52,12 @@ export function TimerCreationCard({ onCreateTimer }: TimerCreationCardProps) {
     if (step === "date" && selectedDate) {
       setStep("name")
     } else if (step === "name" && timerName && selectedDate) {
+      const finalDate = new Date(selectedDate)
+      finalDate.setHours(Number.parseInt(selectedHour || "00", 10))
+      finalDate.setMinutes(Number.parseInt(selectedMinute || "00", 10))
       onCreateTimer({
         name: timerName,
-        endDate: selectedDate,
+        endDate: finalDate,
         type: isTillTimer ? "till" : "from",
       })
       handleCancel()
@@ -93,7 +100,7 @@ export function TimerCreationCard({ onCreateTimer }: TimerCreationCardProps) {
                 Cancel
               </Button>
               <Button size="sm" onClick={handleConfirm} disabled={!selectedDate}>
-                Save
+                Next
               </Button>
             </div>
           </>
@@ -108,7 +115,9 @@ export function TimerCreationCard({ onCreateTimer }: TimerCreationCardProps) {
             </div>
             {selectedDate && (
               <p className="text-xs text-muted-foreground text-center mb-4 font-mono">
-                {selectedDate.toLocaleString(undefined, {
+                {new Date(
+                  selectedDate.setHours(Number.parseInt(selectedHour, 10), Number.parseInt(selectedMinute, 10)),
+                ).toLocaleString(undefined, {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -117,18 +126,49 @@ export function TimerCreationCard({ onCreateTimer }: TimerCreationCardProps) {
                 })}
               </p>
             )}
-            <Input
-              ref={inputRef}
-              type="text"
-              placeholder="Description"
-              value={timerName}
-              onChange={(e) => setTimerName(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="mb-4 w-full font-mono"
-            />
-            <div className="flex justify-between w-full absolute -bottom-6 left-0 right-0 px-4">
-              <Button variant="outline" onClick={handleCancel}>
-                Cancel
+            <div className="flex items-center space-x-4 mb-4 w-full">
+              <Input
+                ref={inputRef}
+                type="text"
+                placeholder="Description"
+                value={timerName}
+                onChange={(e) => setTimerName(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="flex-1 font-mono"
+              />
+              <div className="flex items-center space-x-2">
+                <Input
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  maxLength={2}
+                  value={selectedHour === "00" ? "" : selectedHour}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, "")
+                    setSelectedHour(value ? value.padStart(2, "0") : "00")
+                  }}
+                  className="w-16 font-mono text-center"
+                  placeholder="HH"
+                />
+                <span>:</span>
+                <Input
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  maxLength={2}
+                  value={selectedMinute === "00" ? "" : selectedMinute}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, "")
+                    setSelectedMinute(value ? value.padStart(2, "0") : "00")
+                  }}
+                  className="w-16 font-mono text-center"
+                  placeholder="MM"
+                />
+              </div>
+            </div>
+            <div className="flex justify-end absolute gap-2 mt-2 inset-x-0 bottom-2 px-4">
+              <Button variant="outline" onClick={() => setStep("date")}>
+                Back
               </Button>
               <Button onClick={handleConfirm} disabled={!timerName}>
                 Create Timer
