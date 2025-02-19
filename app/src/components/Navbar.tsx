@@ -17,11 +17,6 @@ export function Navbar() {
                 Home
               </Button>
             </Link>
-            <Link href="/about" passHref>
-              <Button variant="ghost" className="text-foreground">
-                About
-              </Button>
-            </Link>
             <Link href="/dashboard" passHref>
               <Button variant="ghost" className="text-foreground">
                 Dashboard

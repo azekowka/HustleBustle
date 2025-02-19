@@ -36,7 +36,7 @@ const HomePage = () => {
           </motion.div>
         </div>
       </section>
-
+      
       {/* Features Section */}
       <section className="py-16 px-4">
         <div className="max-w-7xl mx-auto">
@@ -58,8 +58,11 @@ const HomePage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="p-6 bg-white rounded-2xl shadow-sm"
+              className="p-6 bg-white rounded-2xl shadow-sm relative"
             >
+              <span className="absolute top-4 right-4 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded">
+                In Production
+              </span>
               <BarChart2 className="w-10 h-10 text-gray-900 mb-4" />
               <h3 className="text-xl font-semibold mb-2">Insights</h3>
               <p className="text-gray-600">
@@ -71,8 +74,11 @@ const HomePage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="p-6 bg-white rounded-2xl shadow-sm"
+              className="p-6 bg-white rounded-2xl shadow-sm relative"
             >
+              <span className="absolute top-4 right-4 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded">
+                In Production
+              </span>
               <Users className="w-10 h-10 text-gray-900 mb-4" />
               <h3 className="text-xl font-semibold mb-2">Team Management</h3>
               <p className="text-gray-600">
