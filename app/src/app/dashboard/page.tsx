@@ -1,11 +1,11 @@
 'use client'
 
-import AboutPage from './about/page'
+import { Dashboard } from '@/components/Dashboard'
 
 export default function Home() {
   return (
     <main>
-      <AboutPage />
+      <Dashboard />
     </main>
   )
 }

@@ -8,7 +8,7 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="text-foreground text-lg font-semibold">
-              Timer Dashboard
+              HustleBustle
             </Link>
           </div>
           <div className="flex">
@@ -20,6 +20,11 @@ export function Navbar() {
             <Link href="/about" passHref>
               <Button variant="ghost" className="text-foreground">
                 About
+              </Button>
+            </Link>
+            <Link href="/dashboard" passHref>
+              <Button variant="ghost" className="text-foreground">
+                Dashboard
               </Button>
             </Link>
             <Link href="/profile" passHref>
