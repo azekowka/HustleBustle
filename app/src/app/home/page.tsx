@@ -18,8 +18,11 @@ const HomePage = () => {
             <span className="px-4 py-1.5 rounded-full bg-gray-100 text-gray-800 text-sm font-medium inline-block mb-6">
               Time Tracking Simplified
             </span>
-            <h1 className="text-5xl font-bold tracking-tight text-gray-900 mb-6">
-              Turn chaos into clarity
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900 mb-6 relative">
+              <span className="relative inline-block">
+                Turn chaos into clarity
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/90 to-transparent animate-shimmer" />
+              </span>
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
               Track time effortlessly with HustleBustle. Streamline your workflow and boost productivity.
