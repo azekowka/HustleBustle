@@ -8,8 +8,9 @@ Turn chaos into clarity—track time effortlessly with HustleBustle
 - [x] Create user profile page
 - [x] Homepage + onboarding
 - [] Set up database
-- [] Add auth using Clerk
+- [x] Add auth using Clerk
 - [] Add analytics (PostHog & Vercel)
+- [] Add collaboration with team members (Clerk Org)
 - [] Add done button for deadlines, that later +points
 - [] Add leaderbord with points
 - [] Add archieve maybe
