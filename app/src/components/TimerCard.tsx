@@ -171,7 +171,7 @@ export function TimerCreationCard({ onCreateTimer }: TimerCreationCardProps) {
                 Back
               </Button>
               <Button onClick={handleConfirm} disabled={!timerName}>
-                Create Timer
+                Create Hustle
               </Button>
             </div>
           </>
