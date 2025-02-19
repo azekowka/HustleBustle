@@ -10,6 +10,7 @@ Turn chaos into clarity—track time effortlessly with HustleBustle
 - [] Set up database
 - [] Add auth using Clerk
 - [] Add analytics (PostHog & Vercel)
-- [] Add done button for deadlines
+- [] Add done button for deadlines, that later +points
+- [] Add leaderbord with points
 - [] Add archieve maybe
-
+- [] Add avatars in profile maybe
