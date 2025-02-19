@@ -148,12 +148,12 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
                   />
                 </div>
               </div>
-              <div className="flex-1 flex items-center justify-center -mt-14">
+              <div className="flex items-center justify-center mb-4">
                 <Calendar
                   mode="single"
                   selected={editDate}
                   onSelect={(date) => date && setEditDate(date)}
-                  className="rounded-md border-none"
+                  className="rounded-md border-none h-full"
                   initialFocus
                 />
               </div>
