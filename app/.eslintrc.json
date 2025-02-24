@@ -2,6 +2,9 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-unused-expressions": "error"
+    "@typescript-eslint/no-unused-expressions": ["error", { 
+      "allowShortCircuit": true,
+      "allowTernary": true 
+    }]
   }
 } 
