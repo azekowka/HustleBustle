@@ -40,9 +40,7 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
       endDate: updatedDate,
       type: editType,
     })
-    if (isEditing) {
-      onToggleEdit(id)
-    }
+    onToggleEdit(id)
   }
 
   const renderTimeUnit = (value: number, label: string) => {
@@ -87,18 +85,6 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
       <React.Fragment key={unit.label}>{renderTimeUnit(unit.value, unit.label)}</React.Fragment>
     ))
   }
-
-  const handleClick = () => {
-    if (isEditing) {
-      onToggleEdit(id)
-    }
-  }
-
-  useEffect(() => {
-    if (isEditing) {
-      onToggleEdit(id)
-    }
-  }, [isEditing, onToggleEdit, id])
 
   return (
     <motion.div
@@ -183,7 +169,7 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
                     </Label>
                 </div>
                 <div className="flex gap-2">
-                    <Button size="sm" variant="outline" onClick={handleClick}>
+                    <Button size="sm" variant="outline" onClick={() => onToggleEdit(id)}>
                     Cancel
                     </Button>
                     <Button size="sm" onClick={handleSaveEdit}>
@@ -246,7 +232,7 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
             transition={{ duration: 0.2 }}
             className="absolute -top-3 -right-3 z-20"
           >
-            <Button variant="secondary" size="icon" className="rounded-full" onClick={handleClick}>
+            <Button variant="secondary" size="icon" className="rounded-full" onClick={() => onToggleEdit(id)}>
               <Edit2 className="h-4 w-4" />
             </Button>
           </motion.div>
