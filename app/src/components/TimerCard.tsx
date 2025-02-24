@@ -16,7 +16,6 @@ interface TimerCreationCardProps {
 }
 
 export function TimerCreationCard({ onCreateTimer }: TimerCreationCardProps) {
-  const [isActive, setIsActive] = useState(false)
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
   const [selectedHour, setSelectedHour] = useState<string>("00")
   const [selectedMinute, setSelectedMinute] = useState<string>("00")
@@ -34,13 +33,11 @@ export function TimerCreationCard({ onCreateTimer }: TimerCreationCardProps) {
   const handleClick = () => {
     if (step === "initial") {
       setStep("date")
-      setIsActive(true)
     }
   }
 
   const handleCancel = () => {
     setStep("initial")
-    setIsActive(false)
     setSelectedDate(undefined)
     setSelectedHour("00")
     setSelectedMinute("00")

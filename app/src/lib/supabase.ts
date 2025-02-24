@@ -9,16 +9,8 @@ if (!supabaseUrl || !supabaseAnonKey) {
 
 // Create the Supabase client
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-  db: {
-    schema: 'public'
-  },
   auth: {
     persistSession: false,
-    autoRefreshToken: false
-  }
-})
-
-// Helper function to create a new client with the user ID
-export const createSupabaseWithAuth = (userId: string) => {
-  return createClient(supabaseUrl, supabaseAnonKey)
-} 
+    autoRefreshToken: false,
+  },
+}) 

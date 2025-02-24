@@ -40,7 +40,9 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
       endDate: updatedDate,
       type: editType,
     })
-    onToggleEdit(id)
+    if (isEditing) {
+      onToggleEdit(id)
+    }
   }
 
   const renderTimeUnit = (value: number, label: string) => {
