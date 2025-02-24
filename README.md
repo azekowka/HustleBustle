@@ -7,7 +7,7 @@ Turn chaos into clarity—track time effortlessly with HustleBustle
 - [x] Changing description, date and type of card
 - [x] Create user profile page
 - [x] Homepage + onboarding
-- [] Set up database
+- [x] Set up database
 - [x] Add auth using Clerk
 - [] Add analytics (PostHog & Vercel)
 - [] Add collaboration with team members (Clerk Org)
