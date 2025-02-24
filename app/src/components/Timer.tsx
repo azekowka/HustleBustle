@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from "react"
+import React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { formatTimeDifference } from "@/utils/formatTimeDifference"
 import { Card, CardContent } from "@/components/ui/card"
