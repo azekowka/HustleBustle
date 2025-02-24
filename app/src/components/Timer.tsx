@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { formatTimeDifference } from "@/utils/formatTimeDifference"
 import { Card, CardContent } from "@/components/ui/card"
@@ -88,6 +88,18 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
     ))
   }
 
+  const handleClick = () => {
+    if (isEditing) {
+      onToggleEdit(id)
+    }
+  }
+
+  useEffect(() => {
+    if (isEditing) {
+      onToggleEdit(id)
+    }
+  }, [isEditing, onToggleEdit, id])
+
   return (
     <motion.div
       layout
@@ -171,7 +183,7 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
                     </Label>
                 </div>
                 <div className="flex gap-2">
-                    <Button size="sm" variant="outline" onClick={() => onToggleEdit(id)}>
+                    <Button size="sm" variant="outline" onClick={handleClick}>
                     Cancel
                     </Button>
                     <Button size="sm" onClick={handleSaveEdit}>
@@ -234,7 +246,7 @@ export function Timer({ id, name, endDate, type, isEditing, onDelete, onEdit, on
             transition={{ duration: 0.2 }}
             className="absolute -top-3 -right-3 z-20"
           >
-            <Button variant="secondary" size="icon" className="rounded-full" onClick={() => onToggleEdit(id)}>
+            <Button variant="secondary" size="icon" className="rounded-full" onClick={handleClick}>
               <Edit2 className="h-4 w-4" />
             </Button>
           </motion.div>
