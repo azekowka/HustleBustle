@@ -165,8 +165,8 @@ const HomePage = () => {
             
             <FeatureCard 
               icon={<BarChart2 className="w-10 h-10" />} 
-              title="Insights" 
-              description="Get detailed AI-backed analytics and reports to optimize your time management."
+              title="Leaderboard" 
+              description="Push your limits. Track your progress, compete with peers, and stay motivated."
               index={1}
               comingSoon
             />
@@ -225,7 +225,7 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-gray-500 text-sm">
             © {new Date().getFullYear()} HustleBustle. All rights reserved.  
-            Built by <a href="https://github.com/azekowka" className="text-gray-500 hover:underline">Azekowka</a>.
+            Built by <a href="https://github.com/azekowka" className="text-gray-500 hover:underline">Azekowka🤍</a>
           </p>
         </div>
       </footer>

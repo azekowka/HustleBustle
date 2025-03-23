@@ -9,9 +9,11 @@ Turn chaos into clarity—track time effortlessly with HustleBustle
 - [x] Homepage + onboarding
 - [x] Set up database
 - [x] Add auth using Clerk
-- [] Add analytics (PostHog & Vercel)
-- [] Add collaboration with team members (Clerk Org)
-- [] Add done button for deadlines, that later +points
+- [x] Add analytics (PostHog & Vercel)
+- [] Add Languine AI for multiple language translation
+- [] Add pomodoro technique
+- [] Add done button for deadlines, then later +points
 - [] Add leaderbord with points
+- [] Add AI-backed analytics regarding 
 - [] Add archieve maybe
-- [] Add avatars in profile maybe
+- [] Add collaboration with team members (Clerk Org)
