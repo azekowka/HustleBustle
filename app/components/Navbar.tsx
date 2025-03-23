@@ -16,11 +16,11 @@ export function Navbar() {
               </Link>
             </div>
             <div className="flex">
-              <Link href="/" passHref>
+              {/*<Link href="/" passHref>
                 <Button variant="ghost" className="text-foreground">
                   Home
                 </Button>
-              </Link>
+              </Link>*/}
   
               {isSignedIn ? (
                 <Link href="/dashboard" passHref>
