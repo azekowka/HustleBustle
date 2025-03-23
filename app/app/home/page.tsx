@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { Clock, BarChart2, Users } from "lucide-react";
 import Link from "next/link";

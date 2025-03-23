@@ -2,16 +2,16 @@
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { formatTimeDifference } from "@/utils/formatTimeDifference";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { formatTimeDifference } from "@/../utils/formatTimeDifference";
+import { Card, CardContent } from "@/../components/ui/card";
+import { Button } from "@/../components/ui/button";
 import { X, Edit2 } from "lucide-react";
-import type { TimerData } from "@/types/TimerData";
+import type { TimerData } from "@/../types/TimerData";
 import { useTime } from "../contexts/TimeContext";
-import { Input } from "@/components/ui/input";
-import { Calendar } from "@/components/ui/calendar";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
+import { Input } from "@/../components/ui/input";
+import { Calendar } from "@/../components/ui/calendar";
+import { Switch } from "@/../components/ui/switch";
+import { Label } from "@/../components/ui/label";
 
 
 interface TimerProps extends TimerData {

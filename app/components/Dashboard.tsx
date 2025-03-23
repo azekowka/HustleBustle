@@ -4,10 +4,10 @@ import React, { useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Timer } from "./Timer"
 import { TimerCreationCard } from "./TimerCard"
-import type { TimerData } from "@/types/TimerData"
+import type { TimerData } from "@/../types/TimerData"
 import { TimeProvider } from "../contexts/TimeContext"
 import { useUser } from "@clerk/nextjs"
-import { supabase } from "@/lib/supabase"
+import { supabase } from "@/../lib/supabase"
 
 export function Dashboard() {
   const [timers, setTimers] = React.useState<TimerData[]>([])

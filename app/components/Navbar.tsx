@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/../components/ui/button";
 import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 
 export function Navbar() {

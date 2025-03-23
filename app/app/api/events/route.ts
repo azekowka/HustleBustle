@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabase';
+import { supabase } from '@/../lib/supabase';
 import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse, NextRequest } from "next/server";
 

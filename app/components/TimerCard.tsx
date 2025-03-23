@@ -2,14 +2,14 @@
 
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
-import { Input } from "@/components/ui/input"
-import type { TimerData } from "@/types/TimerData"
+import { Card, CardContent } from "@/../components/ui/card"
+import { Button } from "@/../components/ui/button"
+import { Calendar } from "@/../components/ui/calendar"
+import { Input } from "@/../components/ui/input"
+import type { TimerData } from "@/../types/TimerData"
 import { Plus } from "lucide-react"
-import { Switch } from "@/components/ui/switch"
-import { Label } from "@/components/ui/label"
+import { Switch } from "@/../components/ui/switch"
+import { Label } from "@/../components/ui/label"
 
 interface TimerCreationCardProps {
   onCreateTimer: (timer: Omit<TimerData, "id">) => void
