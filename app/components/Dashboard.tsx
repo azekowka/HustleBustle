@@ -49,6 +49,19 @@ export function Dashboard() {
     loadTimers()
   }, [user])
 
+  // Set default timer if no timers exist
+  useEffect(() => {
+    if (timers.length === 0 && user) {
+      const defaultTimer: TimerData = {
+        id: Date.now().toString(),
+        name: "Hustle until SAT May 3",
+        endDate: new Date("2025-05-03T00:00:00Z"),
+        type: "till",
+      }
+      setTimers([defaultTimer])
+    }
+  }, [timers, user])
+
   const handleCreateTimer = async (newTimer: Omit<TimerData, "id">) => {
     if (!user) return
 
@@ -170,4 +183,3 @@ export function Dashboard() {
     </TimeProvider>
   )
 }
-

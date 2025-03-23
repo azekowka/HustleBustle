@@ -29,7 +29,7 @@ const HomePage = () => {
               Track time effortlessly with HustleBustle. Streamline your workflow and boost productivity.
             </p>
             <Link
-              href="/dashboard"
+              href="https://artistic-primate-61.accounts.dev/sign-in"
               className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-900 transition-colors"
             >
               Get Started
